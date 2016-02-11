@@ -56,3 +56,21 @@ a:hover, a:visited {
 a:active {
      color: crimson;
  }
+
+/* styling for spirograph pseudologo*/
+#logo {
+    position: relative;
+    /*float: right;*/
+    display: inline;
+}
+#spiro {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+#inset {
+    font-size: 300%;
+    position: absolute;
+    top: 75px;
+    left: 80px;
+}

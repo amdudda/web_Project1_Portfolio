@@ -91,3 +91,4 @@ function filterRepos() {
     //newText = parseData(filteredRepoList);
     document.getElementById("projects").innerHTML = parseData(filteredRepoList);
 }
+
