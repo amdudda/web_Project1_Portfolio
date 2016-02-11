@@ -15,7 +15,7 @@ function parseData(repoData) {
         output += repoData[i].name;
         output += "</a>";
         output += "<p class='sommaire'>" + repoData[i].description + "</p>";
-        output += "<p class='jour'>Last updated: " + repoData[i].updated_at.substring(0,10) + "</p>";
+        output += "<p class='jour'>Last push: " + repoData[i].pushed_at.substring(0,10) + "</p>";
         output += '</div>';
         if (i % numcols == numcols - 1) output += "</div>";  // end a row
     }
