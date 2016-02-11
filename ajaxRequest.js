@@ -5,6 +5,7 @@
 Cadged from http://www.javascriptkit.com/dhtmltutors/ajaxgetpost4.shtml
 Comments not in original are prefixed with "AMD:"
 */
+var jsondata;
 
 function ajaxRequest(){
     var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
@@ -28,20 +29,14 @@ var mygetrequest=new ajaxRequest()
 mygetrequest.onreadystatechange=function(){
     if (mygetrequest.readyState==4){
         if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
-            var jsondata=eval("("+mygetrequest.responseText+")") //retrieve result as an JavaScript object
-/*// AMD: don't need this               var rssentries=jsondata.items;
-            var output='<ul>';
-            for (var i=0; i<jsondata.length; i++){
-                output+='<li>';
-// AMD: modified code to read repository data
-//                   output+='<a href="'+rssentries[i].link+'">';
-                output+=jsondata[i].name // +'</a>';
-                output += "link: " + jsondata[i].html_url;
-                output+='</li>';
-            }
-            output+='</ul>';*/
+            jsondata=eval("("+mygetrequest.responseText+")") //retrieve result as an JavaScript object
+
+            /* AMD: removed a chunk of code and inserted the stuff I need*/
             var output = parseData(jsondata);
             document.getElementById("projects").innerHTML=output;
+            loadLanguages(jsondata);
+
+            /* AMD: end of replacement code*/
         }
         else{
             alert("An error has occured making the request")

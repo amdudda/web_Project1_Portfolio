@@ -1,7 +1,7 @@
 /**
  * Created by amdudda on 2/9/16.
  */
-var repository;
+
 
 function parseData(repoData) {
     var numcols = 3;
@@ -19,29 +19,30 @@ function parseData(repoData) {
         if (i%numcols == numcols-1) output += "</div>";  // end a row
     }
     //document.write(output);
-    repository = repoData;  // also turn over the retrieved data to local storage so filtering doesn't constantly call new AJAX requests.
+
     return output;
 }
 
-function getLanguages() {
+function getLanguages(repository) {
     // this retrieves all the different coding languages used
     var langs = [];
     for (var j = 0; j < repository.length; j++) {
         curRepo = repository[j];
-        if (!(curRepo.language in langs)) {
+        if (langs.indexOf(curRepo.language) == -1) {  // http://www.w3schools.com/jsref/jsref_indexof_array.asp
             langs.push(curRepo.language);
         }
     }
     return langs;
 }
 
+function loadLanguages(repoData) {
 // can we add the list of languages to the web page?
-alert(repository.length);
-var langPara = document.createElement("p");
-langPara.innerText = "Filter by language?  The list is: * "
-var insertWhere = document.getElementById("details");
-var langlist = getLanguages();
-for (var k = 0; k< langlist.length; k++) {
-    langPara.innerText += langlist[k] + " * ";
+    var langPara = document.createElement("p");
+    langPara.innerText = "Filter by language?  The list is: * "
+    var insertWhere = document.getElementById("details");
+    var langlist = getLanguages(repoData);
+    for (var k = 0; k< langlist.length; k++) {
+        langPara.innerText += langlist[k] + " * ";
+    }
+    insertWhere.appendChild(langPara);
 }
-insertWhere.appendChild(langPara);
