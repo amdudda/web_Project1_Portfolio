@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing spirograph</title>
+</head>
+<body>
+<h1>Can I draw a spirograph image?</h1>
+
+<canvas id="spiro" height="200px" width="200px" style="border:1px solid black;">Your browser does not support canvas elements.</canvas>
+
+<!-- code to generate the spirograph-->
+<script>
+    var t=0;
+    do {
+        myCanvas = document.getElementById("spiro");
+        var ctx = myCanvas.getContext("2d");
+        ctx.beginPath();
+        startPt = getXYcoords(t);
+        endPt = getXYcoords(t+1);
+        ctx.moveTo(startPt.xCoord,startPt.yCoord);
+        ctx.lineTo(endPt.xCoord,endPt.yCoord);
+        ctx.strokeStyle = "crimson";
+        ctx.stroke();
+        t++;
+    } while (t < 366);
+
+    function getXYcoords(t) {
+//        returns xy coordinates based on angle t - see Wikipedia article on "Spirograph"
+        var R = 100; // radius of outer circle
+        var r = 50; // radius of inner circle
+        var p = t*r/R; // rho; distance of pen from origin of r inside inner circle
+        // t = angle between y axis and line from orgin to r.
+
+        var l = p/r
+        var k = r/R
+        // therefore
+        // p/R = l*k
+
+        //(x,y) for angle t is:
+        x = R * ( ((1-k)*Math.cos(t)) + l*k*Math.cos( ( (1-k) / k) * t ) ) + 100;
+        y = R * ( ((1-k)*Math.sin(t)) + l*k*Math.sin( ( (1-k) / k) * t ) ) + 100;
+
+        return {xCoord: x, yCoord: y};
+    }
+</script>
+</body>
+</html>
