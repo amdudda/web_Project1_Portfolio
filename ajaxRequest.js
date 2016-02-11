@@ -29,7 +29,7 @@ var mygetrequest=new ajaxRequest()
 mygetrequest.onreadystatechange=function(){
     if (mygetrequest.readyState==4){
         if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
-            jsondata=eval("("+mygetrequest.responseText+")") //retrieve result as an JavaScript object
+            jsondata=eval("("+mygetrequest.responseText+")"); //retrieve result as an JavaScript object
 
             /* AMD: removed a chunk of code and inserted the stuff I need*/
             var output = parseData(jsondata);

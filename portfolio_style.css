@@ -19,6 +19,10 @@ body {
     margin-bottom: 10px;
 }
 
+#footer {
+    text-align: center;
+}
+
 .row {
     margin-bottom: 10px;
 }
@@ -27,7 +31,7 @@ body {
     color: crimson;
     background: #ffc8a4;
     border-radius: 5px;
-    min-height: 75px;  /* this just evens out the cell size so only a really long description will expand the cell */
+    min-height: 100px;  /* this just evens out the cell size so only a really long description will expand the cell */
 }
 
 select,button {
@@ -45,9 +49,10 @@ a {
     color: #00362C;
 }
 
-a:hover {
+a:hover, a:visited {
     color: #FF6400;
 }
-a:visited {
-    color: #FF6400;
-}
+
+a:active {
+     color: crimson;
+ }
