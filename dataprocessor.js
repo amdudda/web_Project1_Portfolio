@@ -11,10 +11,11 @@ function parseData(repoData) {
         output += '<div class="col-sm-4">';  // each project gets its only happy div container
         // also add a pushpin to starred projects.
         if (repoData[i].stargazers_count > 0) output += "<span class='glyphicon glyphicon-pushpin'></span> "
-        output += "<a href='" + repoData[i].html_url + "'>";
+        output += "<a href='" + repoData[i].html_url + "' target='new'>";
         output += repoData[i].name;
         output += "</a>";
-        output += "<p class='summary'>" + repoData[i].description + "</p>";
+        output += "<p class='sommaire'>" + repoData[i].description + "</p>";
+        output += "<p class='jour'>Last updated: " + repoData[i].updated_at.substring(0,10) + "</p>";
         output += '</div>';
         if (i % numcols == numcols - 1) output += "</div>";  // end a row
     }

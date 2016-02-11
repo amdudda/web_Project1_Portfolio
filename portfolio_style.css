@@ -2,6 +2,7 @@
 .jumbotron {
     color: crimson;
     background: #FFC8A4;
+    text-align: center;
 }
 
 .col-sm-12 {
@@ -27,6 +28,10 @@
 
 select,button {
     color: crimson;
+}
+
+.glyphicon-pushpin {
+    font-size:200%;
 }
 
 a:link {
