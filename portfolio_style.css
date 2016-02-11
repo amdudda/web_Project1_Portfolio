@@ -38,7 +38,8 @@ select,button {
     font-size:200%;
 }
 
-a:link {
+a {
+    /* includes a:link */
     font-style: italic;
     text-decoration: underline;
     color: #00362C;
