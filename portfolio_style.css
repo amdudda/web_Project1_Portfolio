@@ -1,0 +1,38 @@
+/* I started with crimson and picked colors that will work with that.  Don't judge me.  */
+.jumbotron {
+    color: crimson;
+    background: #FFC8A4;
+}
+
+.col-sm-12 {
+    color: #FFC8A4;
+    background: crimson;
+    border-radius: 5px;
+}
+
+#summary{
+    margin-bottom: 10px;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+.col-sm-4 {
+    border: 1px solid crimson;
+    color: crimson;
+    background: #ffc8a4;
+    border-radius: 5px;
+    min-height: 75px;  /* this just evens out the cell size so only a really long description will expand the cell */
+}
+
+a:link {
+    font-style: italic;
+    color: #00362C;
+}
+
+a:hover {
+    color: #FF6400;
+}
+a:visited {
+    color: #FF6400;
+}
