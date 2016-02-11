@@ -1,4 +1,8 @@
 /* I started with crimson and picked colors that will work with that.  Don't judge me.  */
+body {
+    background: #FF6400;
+}
+
 .jumbotron {
     color: crimson;
     background: #FFC8A4;
