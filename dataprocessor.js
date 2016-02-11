@@ -38,11 +38,42 @@ function getLanguages(repository) {
 function loadLanguages(repoData) {
 // can we add the list of languages to the web page?
     var langPara = document.createElement("p");
-    langPara.innerText = "Filter by language?  The list is: * "
+    langPara.innerText = "Filter by language?  Select a language:";
     var insertWhere = document.getElementById("details");
     var langlist = getLanguages(repoData);
+    // create a drop-down list to select language to filter on
+    var langDropDownList = document.createElement("select");
+    langDropDownList.name = "selLanguage";
+    langDropDownList.id = "selLanguage";
     for (var k = 0; k< langlist.length; k++) {
-        langPara.innerText += langlist[k] + " * ";
+        langName = langlist[k];
+        langOption = document.createElement("option");
+        langOption.value = langName;
+        langOption.innerText = langName;
+        langDropDownList.appendChild(langOption);
     }
+    // create a button that updates the page contents
+    var filterLanguageButton = document.createElement("button");
+    filterLanguageButton.innerText = "Filter by Language";
+    filterLanguageButton.setAttribute("onclick","filterRepos();");
+    // append the various elements in the appropriate order
+    langPara.appendChild(langDropDownList);
+    langPara.appendChild(filterLanguageButton);
     insertWhere.appendChild(langPara);
+}
+
+function filterRepos() {
+    // this runs through the stored results and replaces contents of web page with only code using the selected language.
+    // build our list of affected repos
+    var filteredRepoList = [];
+    var langToShow = document.getElementById("selLanguage").value;  // this should work, but for some reason it doesn't.
+    for (var k=0; k < jsondata.length; k++) {
+        if (jsondata[k].language == langToShow) {
+            filteredRepoList.push(jsondata[k]);
+        }
+    }
+
+    // then rebuild the projects list
+    //newText = parseData(filteredRepoList);
+    document.getElementById("projects").innerHTML = parseData(filteredRepoList);
 }

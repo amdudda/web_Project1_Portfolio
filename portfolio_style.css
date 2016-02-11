@@ -25,6 +25,10 @@
     min-height: 75px;  /* this just evens out the cell size so only a really long description will expand the cell */
 }
 
+select {
+    color: crimson;
+}
+
 a:link {
     font-style: italic;
     color: #00362C;

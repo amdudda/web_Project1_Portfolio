@@ -5,7 +5,7 @@
 Cadged from http://www.javascriptkit.com/dhtmltutors/ajaxgetpost4.shtml
 Comments not in original are prefixed with "AMD:"
 */
-var jsondata;
+var jsondata;  // AMD: make this global so code can work with it
 
 function ajaxRequest(){
     var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
