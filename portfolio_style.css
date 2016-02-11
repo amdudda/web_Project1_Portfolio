@@ -9,6 +9,11 @@ body {
     text-align: center;
 }
 
+/*#headertext {*/
+    /*position:relative;*/
+    /*left: 125px;*/
+/*}*/
+
 .col-sm-12 {
     color: #FFC8A4;
     background: crimson;
@@ -58,10 +63,15 @@ a:active {
  }
 
 /* styling for spirograph pseudologo*/
+.jumbotron div{
+    border:none;
+    background: none;
+}
 #logo {
     position: relative;
     /*float: right;*/
-    display: inline;
+    /*margin-right: 150px;*/
+    /*display: inline;*/
 }
 #spiro {
     position: absolute;
