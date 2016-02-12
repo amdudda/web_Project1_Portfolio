@@ -4,19 +4,11 @@
 
 // this code generates the spirograph image
 var t=0;
-var colors= ["red","orange","yellow","green","blue","purple","black","grey"];
-do {
-    myCanvas = document.getElementById("spiro");
-    var ctx = myCanvas.getContext("2d");
-    ctx.beginPath();
-    startPt = getXYcoords(t);
-    endPt = getXYcoords(t+1);
-    ctx.moveTo(startPt.xCoord,startPt.yCoord);
-    ctx.lineTo(endPt.xCoord,endPt.yCoord);
-    ctx.strokeStyle =  "crimson"; //colors[ t % colors.length];
-    ctx.stroke();
-    t++;
-} while (t < 900);
+var msec = 5; // time between drawing each line of the spirograph image
+
+// let's use timers to make the drawing of the spirograph lines visible, instead of more-or-less instantly being completed.
+var draw = setInterval(drawSpirograph,msec);
+var stop = setTimeout(function() { clearInterval(draw); },msec*366);  // 365 degrees in a full circle; adding 1 just to ensure it goes all the way around
 
 function getXYcoords(t) {
 //        returns xy coordinates based on angle t - see Wikipedia article on "Spirograph" at https://en.wikipedia.org/wiki/Spirograph
@@ -37,4 +29,19 @@ function getXYcoords(t) {
     y = R * ( ((1-k)*Math.sin(t)) + l*k*Math.sin( ( (1-k) / k) * t ) ) + 100;
 
     return {xCoord: x, yCoord: y};
+}
+
+// this function draws the spirograph image
+function drawSpirograph() {
+    myCanvas = document.getElementById("spiro");
+    var ctx = myCanvas.getContext("2d");
+    ctx.beginPath();
+    startPt = getXYcoords(t);
+    endPt = getXYcoords(t + 1);
+    ctx.moveTo(startPt.xCoord, startPt.yCoord);
+    ctx.lineTo(endPt.xCoord, endPt.yCoord);
+    ctx.strokeStyle = "crimson"; //colors[ t % colors.length];
+    ctx.stroke();
+    t++;
+    return ctx;
 }

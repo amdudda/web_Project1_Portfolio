@@ -34,18 +34,27 @@
 <script>
     var t=0;
     var colors= ["red","orange","yellow","green","blue","purple","black","grey"];
-    do {
+
+    function drawSpirograph() {
         myCanvas = document.getElementById("spiro");
         var ctx = myCanvas.getContext("2d");
         ctx.beginPath();
         startPt = getXYcoords(t);
-        endPt = getXYcoords(t+1);
-        ctx.moveTo(startPt.xCoord,startPt.yCoord);
-        ctx.lineTo(endPt.xCoord,endPt.yCoord);
-        ctx.strokeStyle =  "crimson"; //colors[ t % colors.length];
+        endPt = getXYcoords(t + 1);
+        ctx.moveTo(startPt.xCoord, startPt.yCoord);
+        ctx.lineTo(endPt.xCoord, endPt.yCoord);
+        ctx.strokeStyle = "crimson"; //colors[ t % colors.length];
         ctx.stroke();
         t++;
-    } while (t < 900);
+        return ctx;
+    }
+
+    /*do {
+        var ctx = drawSpirograph();
+    } while (t < 366);*/
+
+    var draw = setInterval(drawSpirograph,25);
+    var stop = setTimeout(function() { clearInterval(draw); },25*366);
 
     function getXYcoords(t) {
 //        returns xy coordinates based on angle t - see Wikipedia article on "Spirograph"
