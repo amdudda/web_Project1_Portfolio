@@ -95,11 +95,11 @@ function loadSortOptions() {
     insertWhere.appendChild(sortByButton);
 }
 
-var filteredRepoList = [];  // stores the filter results.
+var filteredRepoList = [];  // stores the filter results for later sorting.
 function filterRepos() {
     // this runs through the stored results and replaces contents of web page with only code using the selected language.
     // build our list of affected repos
-
+    filteredRepoList = [] // reset repolist to be empty or things get weird.
     var langToShow = document.getElementById("selLanguage").value;
     if (langToShow == "All") {
         for (var k = 0; k < jsondata.length; k++) {
@@ -130,4 +130,46 @@ function sortRepos() {
     // we'll need to do different things based on which sort has been selected.
     var sortBy = document.getElementById("sortBy").value;
     alert(sortBy);
+    /*
+    I think the code from here might do the trick: http://www.levihackwith.com/code-snippet-how-to-sort-an-array-of-json-objects-by-property/
+    The three elements all are conveniently sortable by their naive data type.
+    I kept the function name, so see below for the appropriated code.
+    */
+    if (sortBy == "name") {
+        filteredRepoList.sort(sortAscByProperty(sortBy));
+    } else {
+        filteredRepoList.sort(sortDescByProperty(sortBy));
+    }
+    // then rebuild the projects list
+    document.getElementById("projects").innerHTML = parseData(filteredRepoList);
+}
+
+function sortAscByProperty(property) {
+    'use strict';
+    return function (a, b) {
+        var sortStatus = 0;
+        if (a[property] < b[property]) {
+            sortStatus = -1;
+        } else if (a[property] > b[property]) {
+            sortStatus = 1;
+        }
+
+        return sortStatus;
+    };
+}
+
+
+function sortDescByProperty(property) {
+    // same code as above, but returns results in descending order.
+    'use strict';
+    return function (a, b) {
+        var sortStatus = 0;
+        if (a[property] > b[property]) {
+            sortStatus = -1;
+        } else if (a[property] < b[property]) {
+            sortStatus = 1;
+        }
+
+        return sortStatus;
+    };
 }
