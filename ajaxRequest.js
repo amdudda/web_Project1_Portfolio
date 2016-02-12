@@ -35,7 +35,7 @@ mygetrequest.onreadystatechange=function(){
             var output = parseData(jsondata);
             document.getElementById("projects").innerHTML=output;
             loadLanguages(jsondata);
-
+            loadSortOptions();
             /* AMD: end of replacement code*/
         }
         else{

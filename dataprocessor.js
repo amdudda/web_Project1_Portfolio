@@ -71,10 +71,35 @@ function loadLanguages(repoData) {
     insertWhere.appendChild(langPara);
 }
 
+function loadSortOptions() {
+    var insertWhere = document.getElementById("details");
+    var sortDropDownList = document.createElement("select");
+    sortDropDownList.id = "sortBy";
+    sortDropDownList.name = "sortBy";
+    var sortOptions = {"name":"Name", "pushed_at": "Last Push", "stargazers_count": "Starred" };
+    // create the options for the drop-down list
+    for (key in sortOptions) {
+        var sortOption = document.createElement("option");
+        console.log(key);
+        sortOption.value = key;
+        sortOption.innerText = sortOptions[key];
+        sortDropDownList.appendChild(sortOption);
+    }
+    // create a button that updates the page contents
+    var sortByButton = document.createElement("button");
+    sortByButton.innerText = "Sort the Repositories";
+    sortByButton.setAttribute("onclick", "sortRepos();");
+
+    // and insert the dropdown list & button.
+    insertWhere.appendChild(sortDropDownList);
+    insertWhere.appendChild(sortByButton);
+}
+
+var filteredRepoList = [];  // stores the filter results.
 function filterRepos() {
     // this runs through the stored results and replaces contents of web page with only code using the selected language.
     // build our list of affected repos
-    var filteredRepoList = [];
+
     var langToShow = document.getElementById("selLanguage").value;
     if (langToShow == "All") {
         for (var k = 0; k < jsondata.length; k++) {
@@ -93,3 +118,16 @@ function filterRepos() {
 
 // TODO: add ability to change sort order.  By name, by date, or by starred.
 // I'll need to be able to distinguish whether to use jasondata JSON data or filteredRepoList.  (May need to make fRL global?)
+
+function sortRepos() {
+    // if we don't have an existing filter in place, use jsondata as our list of elements
+    if (filteredRepoList.length == 0) {
+        for (var m = 0; m < jsondata.length; m++) {
+            filteredRepoList[m] = jsondata[m];
+        }
+    }
+
+    // we'll need to do different things based on which sort has been selected.
+    var sortBy = document.getElementById("sortBy").value;
+    alert(sortBy);
+}
