@@ -20,11 +20,11 @@ do {
 
 function getXYcoords(t) {
 //        returns xy coordinates based on angle t - see Wikipedia article on "Spirograph" at https://en.wikipedia.org/wiki/Spirograph
-    var foo = 0;
+
     var R = 100; // radius of outer circle
     var r = 10; // radius of inner circle
     var p = 30; // rho; distance of pen from origin of r inside inner circle
-    foo++;
+
     // t = angle between y axis and line from orgin to r.
 
     var l = p/r
