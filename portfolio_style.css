@@ -67,12 +67,18 @@ a:active {
     border:none;
     background: none;
 }
+
 #logo {
     position: relative;
-    /*float: right;*/
-    /*margin-right: 150px;*/
-    /*display: inline;*/
+    height: 200px;  /* the height of the canvas element it's holding */
 }
+
+#spiroCanvas {
+    position: relative;
+    width: 201px;
+    margin: 0 auto;
+}
+
 #spiro {
     position: absolute;
     top: 0px;
