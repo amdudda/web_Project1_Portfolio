@@ -7,6 +7,7 @@ var t=0;
 var msec = 5; // time between drawing each line of the spirograph image
 
 // let's use timers to make the drawing of the spirograph lines visible, instead of more-or-less instantly being completed.
+// See http://www.w3schools.com/js/js_timing.asp for details on how this works.
 var draw = setInterval(drawSpirograph,msec);
 var stop = setTimeout(function() { clearInterval(draw); },msec*366);  // 365 degrees in a full circle; adding 1 just to ensure it goes all the way around
 
@@ -19,8 +20,8 @@ function getXYcoords(t) {
 
     // t = angle between y axis and line from orgin to r.
 
-    var l = p/r
-    var k = r/R
+    var l = p/r;
+    var k = r/R;
     // therefore
     // p/R = l*k
 
