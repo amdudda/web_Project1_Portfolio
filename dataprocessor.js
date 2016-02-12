@@ -129,7 +129,7 @@ function sortRepos() {
 
     // we'll need to do different things based on which sort has been selected.
     var sortBy = document.getElementById("sortBy").value;
-    alert(sortBy);
+
     /*
     I think the code from here might do the trick: http://www.levihackwith.com/code-snippet-how-to-sort-an-array-of-json-objects-by-property/
     The three elements all are conveniently sortable by their naive data type.
