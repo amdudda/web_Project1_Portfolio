@@ -41,7 +41,7 @@ function drawSpirograph() {
     endPt = getXYcoords(t + 1);
     ctx.moveTo(startPt.xCoord, startPt.yCoord);
     ctx.lineTo(endPt.xCoord, endPt.yCoord);
-    ctx.strokeStyle = "crimson"; //colors[ t % colors.length];
+    ctx.strokeStyle = "#00072B"; //colors[ t % colors.length];
     ctx.stroke();
     t++;
     return ctx;
