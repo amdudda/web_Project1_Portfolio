@@ -5,52 +5,27 @@ body {
 
 .jumbotron {
     color: #00072B;
-    background: #BDC5C8  ;
-    text-align: center;
+    background: #BDC5C8 ;
 }
-
-/*#headertext {*/
-    /*position:relative;*/
-    /*left: 125px;*/
-/*}*/
 
 .col-sm-12 {
     color: #BDC5C8  ;
     background: #00072B;
-    border-radius: 5px;
 }
 
-#summary{
-    margin-bottom: 10px;
-}
-
-#footer {
-    text-align: center;
-}
-
-.row {
-    margin-bottom: 10px;
-}
 .col-sm-4 {
-    border: 1px solid #00072B;
+    border-color: #00072B;
+    /*border: 1px solid #00072B;*/
     color: #00072B;
-    background: #BDC5C8  ;
-    border-radius: 5px;
-    min-height: 100px;  /* this just evens out the cell size so only a really long description will expand the cell */
+    background: #BDC5C8;
 }
 
 select,button {
     color: #00072B;
 }
 
-.glyphicon-pushpin {
-    font-size:200%;
-}
-
 a {
     /* includes a:link */
-    font-style: italic;
-    text-decoration: underline;
     color: #00362C;
 }
 
@@ -60,33 +35,4 @@ a:hover, a:visited {
 
 a:active {
      color: #00362C;
- }
-
-/* styling for spirograph pseudologo*/
-.jumbotron div{
-    border:none;
-    background: none;
-}
-
-#logo {
-    position: relative;
-    height: 200px;  /* the height of the canvas element it's holding */
-}
-
-#spiroCanvas {
-    position: relative;
-    width: 201px;
-    margin: 0 auto;
-}
-
-#spiro {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
-#inset {
-    font-size: 300%;
-    position: absolute;
-    top: 75px;
-    left: 80px;
 }

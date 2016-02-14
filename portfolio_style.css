@@ -1,11 +1,5 @@
-/* I started with crimson and picked colors that will work with that.  Don't judge me.  But creamsicles sure are tasty!  */
-body {
-    background: #FF6400;
-}
-
+/* This specifies layout settings independent of color*/
 .jumbotron {
-    color: crimson;
-    background: #FFC8A4;
     text-align: center;
 }
 
@@ -15,8 +9,6 @@ body {
 /*}*/
 
 .col-sm-12 {
-    color: #FFC8A4;
-    background: crimson;
     border-radius: 5px;
 }
 
@@ -31,16 +23,13 @@ body {
 .row {
     margin-bottom: 10px;
 }
+
 .col-sm-4 {
-    border: 1px solid crimson;
-    color: crimson;
-    background: #ffc8a4;
+    border-width: 1px;
+    border-style: solid;
+    /*border: 1px solid crimson;*/
     border-radius: 5px;
     min-height: 100px;  /* this just evens out the cell size so only a really long description will expand the cell */
-}
-
-select,button {
-    color: crimson;
 }
 
 .glyphicon-pushpin {
@@ -51,16 +40,7 @@ a {
     /* includes a:link */
     font-style: italic;
     text-decoration: underline;
-    color: #00362C;
 }
-
-a:hover, a:visited {
-    color: #FF6400;
-}
-
-a:active {
-     color: crimson;
- }
 
 /* styling for spirograph pseudologo*/
 .jumbotron div{
