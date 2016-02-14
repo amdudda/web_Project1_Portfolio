@@ -116,7 +116,7 @@ function filterRepos() {
     document.getElementById("projects").innerHTML = parseData(filteredRepoList);
 }
 
-// TODO: add ability to change sort order.  By name, by date, or by starred.
+// This gives ability to change sort order.  By name, by date, or by starred.
 // I'll need to be able to distinguish whether to use jasondata JSON data or filteredRepoList.  (May need to make fRL global?)
 
 function sortRepos() {

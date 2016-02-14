@@ -33,6 +33,7 @@ function getXYcoords(t) {
 }
 
 // this function draws the spirograph image
+
 function drawSpirograph() {
     myCanvas = document.getElementById("spiro");
     var ctx = myCanvas.getContext("2d");
@@ -41,7 +42,10 @@ function drawSpirograph() {
     endPt = getXYcoords(t + 1);
     ctx.moveTo(startPt.xCoord, startPt.yCoord);
     ctx.lineTo(endPt.xCoord, endPt.yCoord);
-    ctx.strokeStyle = "#00072B"; //colors[ t % colors.length];
+/*  TODO: why is this not working?
+    var drawingColor = document.querySelector(".jumbotron").style.color;
+    console.log(drawingColor);  */
+    ctx.strokeStyle = "#00072B";  // drawingColor;
     ctx.stroke();
     t++;
     return ctx;
