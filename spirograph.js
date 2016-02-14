@@ -32,8 +32,14 @@ function getXYcoords(t) {
     return {xCoord: x, yCoord: y};
 }
 
-// this function draws the spirograph image
+// this parses out the color attribute of the lede container so I can use it to draw my spirograph-based image.
+// found the code for this at: http://stackoverflow.com/questions/13980101/get-background-color-of-a-css-class-applied-to-an-element
+ var el = document.getElementById("lede");
+ var css = window.getComputedStyle(el);
+ var drawingColor = css.getPropertyValue("color");  // this returns an RGB value, but that's OK, strokeStyle understands that.
+ //console.log(drawingColor);
 
+// this function draws the spirograph image
 function drawSpirograph() {
     myCanvas = document.getElementById("spiro");
     var ctx = myCanvas.getContext("2d");
@@ -42,10 +48,7 @@ function drawSpirograph() {
     endPt = getXYcoords(t + 1);
     ctx.moveTo(startPt.xCoord, startPt.yCoord);
     ctx.lineTo(endPt.xCoord, endPt.yCoord);
-/*  TODO: why is this not working?
-    var drawingColor = document.querySelector(".jumbotron").style.color;
-    console.log(drawingColor);  */
-    ctx.strokeStyle = "#00072B";  // drawingColor;
+    ctx.strokeStyle = drawingColor;  //  "#00072B";
     ctx.stroke();
     t++;
     return ctx;

@@ -80,7 +80,7 @@ function loadSortOptions() {
     // create the options for the drop-down list
     for (key in sortOptions) {
         var sortOption = document.createElement("option");
-        console.log(key);
+        // console.log(key);
         sortOption.value = key;
         sortOption.innerText = sortOptions[key];
         sortDropDownList.appendChild(sortOption);
