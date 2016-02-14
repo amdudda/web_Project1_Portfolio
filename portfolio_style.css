@@ -3,11 +3,6 @@
     text-align: center;
 }
 
-/*#headertext {*/
-    /*position:relative;*/
-    /*left: 125px;*/
-/*}*/
-
 .col-sm-12 {
     border-radius: 5px;
 }
@@ -30,6 +25,10 @@
     /*border: 1px solid crimson;*/
     border-radius: 5px;
     min-height: 100px;  /* this just evens out the cell size so only a really long description will expand the cell */
+}
+
+select, button {
+    margin: 0 5px;
 }
 
 .glyphicon-pushpin {

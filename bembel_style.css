@@ -14,7 +14,7 @@ body {
 }
 
 .col-sm-4 {
-    border-color: #00072B;
+    border-color: #00072B;  /* this gets overridden for classes inside the jumbotron. */
     /*border: 1px solid #00072B;*/
     color: #00072B;
     background: #BDC5C8;

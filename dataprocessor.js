@@ -73,6 +73,10 @@ function loadLanguages(repoData) {
 
 function loadSortOptions() {
     var insertWhere = document.getElementById("details");
+    // create a paragraph to explain the sorting options
+    var sortPara = document.createElement("p");
+    sortPara.innerText = "You can sort the current repository listing by one of these attributes:";
+    // set up the drop down list
     var sortDropDownList = document.createElement("select");
     sortDropDownList.id = "sortBy";
     sortDropDownList.name = "sortBy";
@@ -91,8 +95,10 @@ function loadSortOptions() {
     sortByButton.setAttribute("onclick", "sortRepos();");
 
     // and insert the dropdown list & button.
-    insertWhere.appendChild(sortDropDownList);
-    insertWhere.appendChild(sortByButton);
+    sortPara.appendChild(sortDropDownList);
+    sortPara.appendChild(sortByButton);  // TODO: give the option to sort ascending or descending
+
+    insertWhere.appendChild(sortPara);
 }
 
 var filteredRepoList = [];  // stores the filter results for later sorting.
