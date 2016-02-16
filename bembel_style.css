@@ -1,6 +1,8 @@
 /* I started with crimson and picked colors that will work with that.  Don't judge me.  But creamsicles sure are tasty!  */
 body {
     background: #FEFEFE;
+    background: url("images/crystal4.jpg");  /* image is a photo I took and modified for this site */
+    background-attachment: fixed;  /* http://www.w3schools.com/cssref/pr_background-attachment.asp */
 }
 
 .jumbotron {
