@@ -105,7 +105,7 @@ var filteredRepoList = [];  // stores the filter results for later sorting.
 function filterRepos() {
     // this runs through the stored results and replaces contents of web page with only code using the selected language.
     // build our list of affected repos
-    filteredRepoList = [] // reset repolist to be empty or things get weird.
+    filteredRepoList = []; // reset repolist to be empty or things get weird.
     var langToShow = document.getElementById("selLanguage").value;
     if (langToShow == "All") {
         for (var k = 0; k < jsondata.length; k++) {
