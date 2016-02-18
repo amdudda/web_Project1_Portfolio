@@ -20,27 +20,30 @@
     <div class="jumbotron">
         <div class="row">
             <!-- Banner at top of page with key info -->
-            <div id="lede" class="col-md-8">
+            <div id="lede" class="col-sm-8">
                 <h1>Coding Portfolio </h1>
             </div>
-            <div id="headertext" class="col-sm-8 col-md-push-8">
+            <div id="logo" class="col-sm-8 col-md-4">
+                <!-- Pseudo logo - just a fun thing to practice drawing stuff -->
+                <div id="spiroCanvas">
+                    <p id="inset"><span class="glyphicon glyphicon-folder-open"></span></p>
+                    <canvas id="spiro" height="200px" width="200px">If your browser does not support canvas elements, you
+                        will see this text instead of a spirograph being drawn via some JavaScript code.
+                    </canvas>
+                </div>
+            </div>
+            <div id="headertext" class="col-sm-8">
             <!-- TODO: get this to flow under the "lede" element in wide layout instead of aligning to the bottom of "logo".
             Study the link below a bit more, it seems to be kind of in the right direction, though my current results are...
             entertainingly wrong...
             http://getbootstrap.com/css/#grid-responsive-resets
+
+            Still not getting a good layout.  Docs seem to imply that push and pull do what I want, but no dice.
+            I may have to do two blocks of code, one visible on large screens and one visible on smaller screens
             -->
             <p>For <a mailto="tk0654wm@minneapolis.edu">A. M. Dudda</a>, Software Development student<br/>
                 AAS Degree program at <a href="http://minneapolis.edu">Minneapolis Community & Technical College</a>.
             </p>
-        </div>
-            <div id="logo" class="col-sm-4 col-lg-pull-4">
-                <!-- Pseudo logo - just a fun thing to practice drawing stuff -->
-                <div id="spiroCanvas">
-                <p id="inset"><span class="glyphicon glyphicon-folder-open"></span></p>
-                <canvas id="spiro" height="200px" width="200px">If your browser does not support canvas elements, you
-                    will see this text instead of a spirograph being drawn via some JavaScript code.
-                </canvas>
-                </div>
             </div>
 
         </div>
