@@ -12,15 +12,30 @@ function parseData(repoData) {
         // also add a pushpin to starred projects.
         if (repoData[i].stargazers_count > 0) output += "<span class='glyphicon glyphicon-pushpin'></span> "
         output += "<a href='" + repoData[i].html_url + "' target='new'>";
-        output += repoData[i].name;
+        output += parseName(repoData[i].name);
         output += "</a>";
         output += "<p class='sommaire'>" + repoData[i].description + "</p>";
+        output += "<p class='langue'>Language: " + repoData[i].language + "</p>";
         output += "<p class='jour'>Last push: " + repoData[i].pushed_at.substring(0,10) + "</p>";
         output += '</div>';
         if (i % numcols == numcols - 1) output += "</div>";  // end a row
     }
     //document.write(output);
 
+    return output;
+}
+
+function parseName(repoName) {
+//    converts repository name into easier to read format by stripping out prefix and converting underscores to spaces
+    var prefixes = ["java","cSharp","web"];
+    var firstUnderscore = repoName.indexOf("_");
+    var firstWord = repoName.substring(0,firstUnderscore);
+    var output = repoName;
+    if (prefixes.indexOf(firstWord) != -1) {
+        // strip out the prefix and first underscore
+        output = output.substring(firstUnderscore + 1);
+    }
+    output = output.replace("_"," ");
     return output;
 }
 
