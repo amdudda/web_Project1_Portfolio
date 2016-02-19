@@ -18,10 +18,9 @@ function parseData(repoData) {
         output += "<p class='langue'>Language: " + repoData[i].language + "</p>";
         output += "<p class='jour'>Last push: " + repoData[i].pushed_at.substring(0,10) + "</p>";
         output += '</div>';
-        if (i % numcols == numcols - 1) output += "</div>";  // end a row
+        // end a row if there are 3 cells or if the last repo has been processed.
+        if (i % numcols == numcols - 1 || i+1 == repoData.length) output += "</div>";
     }
-    //document.write(output);
-
     return output;
 }
 
@@ -30,13 +29,13 @@ function parseName(repoName) {
     var prefixes = ["java","cSharp","web"];
     var firstUnderscore = repoName.indexOf("_");
     var firstWord = repoName.substring(0,firstUnderscore);
-    var output = repoName;
+    var parsedData = repoName;
     if (prefixes.indexOf(firstWord) != -1) {
         // strip out the prefix and first underscore
-        output = output.substring(firstUnderscore + 1);
+        parsedData = parsedData.substring(firstUnderscore + 1);
     }
-    output = output.replace("_"," ");
-    return output;
+    parsedData = parsedData.replace("_"," ");
+    return parsedData;
 }
 
 function getLanguages(repository) {
