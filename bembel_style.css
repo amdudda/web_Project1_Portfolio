@@ -6,8 +6,13 @@ body {
 }
 
 .jumbotron {
-    color: #00072B;
+    /*color: #00072B;*/
     background: #BDC5C8 ;
+}
+
+.jumbotron div {
+    color: #00072B;
+    /*background: #BDC5C8 ;*/
 }
 
 .col-sm-12 {
