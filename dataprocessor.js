@@ -94,7 +94,7 @@ function loadSortOptions() {
     var sortDropDownList = document.createElement("select");
     sortDropDownList.id = "sortBy";
     sortDropDownList.name = "sortBy";
-    var sortOptions = {"name":"Name", "pushed_at": "Last Push", "stargazers_count": "Starred" };
+    var sortOptions = {"name":"Name", "pushed_at": "Last Push", "stargazers_count": "Stars" };
     // create the options for the drop-down list
     for (key in sortOptions) {
         var sortOption = document.createElement("option");
@@ -103,14 +103,19 @@ function loadSortOptions() {
         sortOption.innerText = sortOptions[key];
         sortDropDownList.appendChild(sortOption);
     }
-    // create a button that updates the page contents
-    var sortByButton = document.createElement("button");
-    sortByButton.innerText = "Sort the Repositories";
-    sortByButton.setAttribute("onclick", "sortRepos();");
+    // create a button that sort ascending
+    var sortAscButton = document.createElement("button");
+    sortAscButton.innerText = "Sort Ascending";
+    sortAscButton.setAttribute("onclick", "sortRepos(true);");
+    // descending sort
+    var sortDescButton = document.createElement("button");
+    sortDescButton.innerText = "Sort Descending";
+    sortDescButton.setAttribute("onclick", "sortRepos(false);");
 
-    // and insert the dropdown list & button.
+    // and insert the dropdown list & buttons.
     sortPara.appendChild(sortDropDownList);
-    sortPara.appendChild(sortByButton);  // TODO: give the option to sort ascending or descending
+    sortPara.appendChild(sortAscButton);  // done: give the option to sort ascending or descending
+    sortPara.appendChild(sortDescButton);
 
     insertWhere.appendChild(sortPara);
 }
@@ -139,7 +144,7 @@ function filterRepos() {
 // This gives ability to change sort order.  By name, by date, or by starred.
 // I'll need to be able to distinguish whether to use jasondata JSON data or filteredRepoList.  (May need to make fRL global?)
 
-function sortRepos() {
+function sortRepos(wantAsc) {
     // if we don't have an existing filter in place, use jsondata as our list of elements
     if (filteredRepoList.length == 0) {
         for (var m = 0; m < jsondata.length; m++) {
@@ -155,7 +160,7 @@ function sortRepos() {
     The three elements all are conveniently sortable by their naive data type.
     I kept the function name, so see below for the appropriated code.
     */
-    if (sortBy == "name") {
+    if (wantAsc) {
         filteredRepoList.sort(sortAscByProperty(sortBy));
     } else {
         filteredRepoList.sort(sortDescByProperty(sortBy));
@@ -178,9 +183,8 @@ function sortAscByProperty(property) {
     };
 }
 
-
 function sortDescByProperty(property) {
-    // same code as above, but returns results in descending order.
+    // same code as above, but edited to return results in descending order.
     'use strict';
     return function (a, b) {
         var sortStatus = 0;
