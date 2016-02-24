@@ -8,7 +8,7 @@ Comments not in original are prefixed with "AMD:"
 var jsondata;  // AMD: make this global so code can work with it
 
 function ajaxRequest(){
-    var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
+    var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"]; //activeX versions to check for in IE
     if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
         for (var i=0; i<activexmodes.length; i++){
             try{
@@ -25,15 +25,14 @@ function ajaxRequest(){
         return false;
 }
 
-var mygetrequest=new ajaxRequest()
+var mygetrequest=new ajaxRequest();
 mygetrequest.onreadystatechange=function(){
     if (mygetrequest.readyState==4){
         if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
             jsondata=eval("("+mygetrequest.responseText+")"); //retrieve result as an JavaScript object
 
             /* AMD: removed a chunk of code and inserted the stuff I need*/
-            var output = parseData(jsondata);
-            document.getElementById("projects").innerHTML=output;
+            document.getElementById("projects").innerHTML=parseData(jsondata);
             loadLanguages(jsondata);
             loadSortOptions();
             /* AMD: end of replacement code*/
@@ -42,7 +41,7 @@ mygetrequest.onreadystatechange=function(){
             alert("An error has occured making the request")
         }
     }
-}
+};
 
 // for now, the 100 per page will get all my existing repos.
 // TODO: think about how to get all repos as my collection of repos gets larger: https://developer.github.com/v3/

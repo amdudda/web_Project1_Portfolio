@@ -26,8 +26,8 @@ function getXYcoords(t) {
     // p/R = l*k
 
     //(x,y) for angle t is:
-    x = R * ( ((1-k)*Math.cos(t)) + l*k*Math.cos( ( (1-k) / k) * t ) ) + 100;
-    y = R * ( ((1-k)*Math.sin(t)) + l*k*Math.sin( ( (1-k) / k) * t ) ) + 100;
+    var x = R * ( ((1-k)*Math.cos(t)) + l*k*Math.cos( ( (1-k) / k) * t ) ) + 100;
+    var y = R * ( ((1-k)*Math.sin(t)) + l*k*Math.sin( ( (1-k) / k) * t ) ) + 100;
 
     return {xCoord: x, yCoord: y};
 }
@@ -41,11 +41,11 @@ function getXYcoords(t) {
 
 // this function draws the spirograph image
 function drawSpirograph() {
-    myCanvas = document.getElementById("spiro");
+    var myCanvas = document.getElementById("spiro");
     var ctx = myCanvas.getContext("2d");
     ctx.beginPath();
-    startPt = getXYcoords(t);
-    endPt = getXYcoords(t + 1);
+    var startPt = getXYcoords(t);
+    var endPt = getXYcoords(t + 1);
     ctx.moveTo(startPt.xCoord, startPt.yCoord);
     ctx.lineTo(endPt.xCoord, endPt.yCoord);
     ctx.strokeStyle = drawingColor;  //  "#00072B";

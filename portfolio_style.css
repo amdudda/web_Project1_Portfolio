@@ -20,9 +20,6 @@
 }
 
 .col-sm-4 {
-    border-width: 1px;
-    border-style: solid;
-    /*border: 1px solid crimson;*/
     border-radius: 5px;
     min-height: 100px;  /* this just evens out the cell size so only a really long description will expand the cell */
 }
@@ -60,8 +57,8 @@ a {
 
 #spiro {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
 }
 #inset {
     font-size: 300%;

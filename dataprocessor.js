@@ -10,7 +10,7 @@ function parseData(repoData) {
         if (i % numcols == 0) output += "<div class='row'>"; // start a new row
         output += '<div class="col-sm-4">';  // each project gets its only happy div container
         // also add a pushpin to starred projects.
-        if (repoData[i].stargazers_count > 0) output += "<span class='glyphicon glyphicon-pushpin'></span> "
+        if (repoData[i].stargazers_count > 0) output += "<span class='glyphicon glyphicon-pushpin'></span> ";
         output += "<a href='" + repoData[i].html_url + "' target='new'>";
         output += parseName(repoData[i].name);
         output += "</a>";
@@ -42,7 +42,7 @@ function getLanguages(repository) {
     // this retrieves all the different coding languages used
     var langs = [];
     for (var j = 0; j < repository.length; j++) {
-        curRepo = repository[j];
+        var curRepo = repository[j];
         if (langs.indexOf(curRepo.language) == -1) {  // http://www.w3schools.com/jsref/jsref_indexof_array.asp
             langs.push(curRepo.language);
         }
@@ -96,7 +96,7 @@ function loadSortOptions() {
     sortDropDownList.name = "sortBy";
     var sortOptions = {"name":"Name", "pushed_at": "Last Push", "stargazers_count": "Stars" };
     // create the options for the drop-down list
-    for (key in sortOptions) {
+    for (var key in sortOptions) {
         var sortOption = document.createElement("option");
         // console.log(key);
         sortOption.value = key;
@@ -131,11 +131,12 @@ function filterRepos() {
             filteredRepoList.push(jsondata[k]);
         }
     } else {
-        for (var k = 0; k < jsondata.length; k++) {
-            if (jsondata[k].language == langToShow) {
-                filteredRepoList.push(jsondata[k]);
+        for (var l = 0; l < jsondata.length; l++) {
+            if (jsondata[l].language == langToShow) {
+                filteredRepoList.push(jsondata[l]);
             }
         }
+
     }
     // then rebuild the projects list
     document.getElementById("projects").innerHTML = parseData(filteredRepoList);

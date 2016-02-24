@@ -16,8 +16,7 @@ body {
 }
 
 .col-sm-4 {
-    border-color: crimson;
-    /*border: 1px solid crimson;*/
+    border: 1px solid crimson;
     color: crimson;
     background: #ffc8a4;
 }
