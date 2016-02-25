@@ -16,25 +16,25 @@ function parseData(repoData) {
         output += "</a>";
         output += "<p class='sommaire'>" + repoData[i].description + "</p>";
         output += "<p class='langue'>Language: " + repoData[i].language + "</p>";
-        output += "<p class='jour'>Last push: " + repoData[i].pushed_at.substring(0,10) + "</p>";
+        output += "<p class='jour'>Last push: " + repoData[i].pushed_at.substring(0, 10) + "</p>";
         output += '</div>';
         // end a row if there are 3 cells or if the last repo has been processed.
-        if (i % numcols == numcols - 1 || i+1 == repoData.length) output += "</div>";
+        if (i % numcols == numcols - 1 || i + 1 == repoData.length) output += "</div>";
     }
     return output;
 }
 
 function parseName(repoName) {
 //    converts repository name into easier to read format by stripping out prefix and converting underscores to spaces
-    var prefixes = ["java","cSharp","web"];
+    var prefixes = ["java", "cSharp", "web"];
     var firstUnderscore = repoName.indexOf("_");
-    var firstWord = repoName.substring(0,firstUnderscore);
+    var firstWord = repoName.substring(0, firstUnderscore);
     var parsedData = repoName;
     if (prefixes.indexOf(firstWord) != -1) {
         // strip out the prefix and first underscore
         parsedData = parsedData.substring(firstUnderscore + 1);
     }
-    parsedData = parsedData.replace("_"," ");
+    parsedData = parsedData.replace("_", " ");
     return parsedData;
 }
 
@@ -94,14 +94,16 @@ function loadSortOptions() {
     var sortDropDownList = document.createElement("select");
     sortDropDownList.id = "sortBy";
     sortDropDownList.name = "sortBy";
-    var sortOptions = {"name":"Name", "pushed_at": "Last Push", "stargazers_count": "Stars" };
+    var sortOptions = {"name": "Name", "pushed_at": "Last Push", "stargazers_count": "Stars"};
     // create the options for the drop-down list
     for (var key in sortOptions) {
-        var sortOption = document.createElement("option");
-        // console.log(key);
-        sortOption.value = key;
-        sortOption.innerText = sortOptions[key];
-        sortDropDownList.appendChild(sortOption);
+        if (sortOptions.hasOwnProperty(key)) {  // guarding against the possibility of weird inheritance, even though it's a one-off ad-hoc dictionary object
+            var sortOption = document.createElement("option");
+            // console.log(key);
+            sortOption.value = key;
+            sortOption.innerText = sortOptions[key];
+            sortDropDownList.appendChild(sortOption);
+        }
     }
     // create a button that sort ascending
     var sortAscButton = document.createElement("button");
@@ -157,10 +159,10 @@ function sortRepos(wantAsc) {
     var sortBy = document.getElementById("sortBy").value;
 
     /*
-    I think the code from here might do the trick: http://www.levihackwith.com/code-snippet-how-to-sort-an-array-of-json-objects-by-property/
-    The three elements all are conveniently sortable by their naive data type.
-    I kept the function name, so see below for the appropriated code.
-    */
+     I think the code from here might do the trick: http://www.levihackwith.com/code-snippet-how-to-sort-an-array-of-json-objects-by-property/
+     The three elements all are conveniently sortable by their naive data type.
+     I kept the function name, so see below for the appropriated code.
+     */
     if (wantAsc) {
         filteredRepoList.sort(sortAscByProperty(sortBy));
     } else {
