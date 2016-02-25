@@ -8,7 +8,7 @@ function parseData(repoData) {
     var output = "";
     for (var i = 0; i < repoData.length; i++) {
         if (i % numcols == 0) output += "<div class='row'>"; // start a new row
-        output += '<div class="col-sm-4">';  // each project gets its only happy div container
+        output += '<div class="col-sm-4">';  // each project gets its own div container
         // also add a pushpin to starred projects.
         if (repoData[i].stargazers_count > 0) output += "<span class='glyphicon glyphicon-pushpin'></span> ";
         output += "<a href='" + repoData[i].html_url + "' target='new'>";
