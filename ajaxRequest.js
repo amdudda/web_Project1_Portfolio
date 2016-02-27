@@ -32,6 +32,9 @@ mygetrequest.onreadystatechange=function(){
             jsondata=eval("("+mygetrequest.responseText+")"); //retrieve result as an JavaScript object
 
             /* AMD: removed a chunk of code and inserted the stuff I need*/
+            console.log(mygetrequest.getAllResponseHeaders());
+            console.log(mygetrequest.getResponseHeader("Link"));  /* I CAN PARSE THIS INFO TO FIGURE OUT WHETHER NEXT == LAST */
+
             document.getElementById("projects").innerHTML=parseData(jsondata);
             loadLanguages(jsondata);
             loadSortOptions();
@@ -46,5 +49,6 @@ mygetrequest.onreadystatechange=function(){
 // for now, the 100 per page will get all my existing repos.
 // TODO: think about how to get all repos as my collection of repos gets larger: https://developer.github.com/v3/
 // also consider this info: http://stackoverflow.com/questions/1374126/how-to-extend-an-existing-javascript-array-with-another-array
-mygetrequest.open("GET", "https://api.github.com/users/amdudda/repos?per_page=100", true);
+// and this looks useful, if we can parse the headers somehow: https://developer.github.com/guides/traversing-with-pagination/
+mygetrequest.open("GET", "https://api.github.com/users/amdudda/repos", true);
 mygetrequest.send(null);
