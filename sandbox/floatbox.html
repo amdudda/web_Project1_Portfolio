@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #readme_info {
+            /* http://www.w3schools.com/cssref/pr_class_visibility.asp */
+            visibility: hidden;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            height: 300px;
+            width: 500px;
+            border: 1px solid crimson;
+            border-radius: 5px;
+            background: lightyellow;
+            text-wrap: normal;
+        }
+        .readme {
+            color: blue;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="readme_info"> aaaaaaaa </div>
+
+<p>here, view some <span class="readme">readmes</span></p>
+<p>here, view another <span class="readme">readme</span></p>
+<p>oh, yeah, did I mention you can view some <span class="readme">readmes</span>?</p>
+
+<script>
+    var readmeClass = document.getElementsByClassName("readme");
+    var r_i = document.getElementById("readme_info");
+    //console.log(r_i.innerText);
+
+    // event listeners for readme class elements
+    for (var i= 0; i<readmeClass.length; i++) {
+        readmeClass[i].addEventListener("click", function() {
+            var mycontents = "https://github.com/amdudda/web_Project1_Portfolio/blob/master/README.md";
+            r_i.innerHTML = '<link href="https://github.com/amdudda/web_Project1_Portfolio/blob/master/README.md">';
+            r_i.style.visibility = "visible";
+        });
+    };
+
+    // also event listener for the r_i element
+    r_i.addEventListener("click",function() { this.style.visibility = "hidden"; } );
+</script>
+
+
+</body>
+</html>

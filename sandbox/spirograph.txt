@@ -1,0 +1,18 @@
+https://en.wikipedia.org/wiki/Spirograph
+
+Spirograph equation:
+
+R = radius of outer circle
+r = radius of inner circle
+p = rho; distance of pen from origin of r inside inner circle
+t = angle between y axis and line from orgin to r.
+
+	let l = p/r
+	let k = r/R
+therefore
+	p/R = lk
+
+(x,y) for angle t is:
+
+x(t) = R * ( ((1-k)*cos(t)) + l*k*cos( ( (1-k) / k) * t ) )
+y(t) = R * ( ((1-k)*sin(t)) + l*k*sin( ( (1-k) / k) * t ) )
