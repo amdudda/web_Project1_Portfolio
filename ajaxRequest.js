@@ -33,8 +33,10 @@ mygetrequest.onreadystatechange=function(){
 
             /* AMD: removed a chunk of code and inserted the stuff I need*/
             console.log(mygetrequest.getAllResponseHeaders());
-            console.log(mygetrequest.getResponseHeader("Link"));  /* I CAN PARSE THIS INFO TO FIGURE OUT WHETHER NEXT == LAST */
-// and then change this so that it fires off a bunch of async requests that collaboratively build my data object
+            var linkdata = (mygetrequest.getResponseHeader("Link").split(","));  /* I CAN PARSE THIS INFO TO FIGURE OUT WHETHER NEXT == LAST */
+            var num_link_records = linkdata.length -1;
+            console.log(linkdata[num_link_records].split("=")[1].split(">")[0]);  // this parses out the total number of pages that make up my repository listing
+// and then change the next bit so that it fires off a bunch of async requests that collaboratively build my data object
             // before building my web page
             document.getElementById("projects").innerHTML=parseData(jsondata);
             loadLanguages(jsondata);
