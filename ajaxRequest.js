@@ -34,7 +34,8 @@ mygetrequest.onreadystatechange=function(){
             /* AMD: removed a chunk of code and inserted the stuff I need*/
             console.log(mygetrequest.getAllResponseHeaders());
             console.log(mygetrequest.getResponseHeader("Link"));  /* I CAN PARSE THIS INFO TO FIGURE OUT WHETHER NEXT == LAST */
-
+// and then change this so that it fires off a bunch of async requests that collaboratively build my data object
+            // before building my web page
             document.getElementById("projects").innerHTML=parseData(jsondata);
             loadLanguages(jsondata);
             loadSortOptions();
@@ -50,5 +51,5 @@ mygetrequest.onreadystatechange=function(){
 // TODO: think about how to get all repos as my collection of repos gets larger: https://developer.github.com/v3/
 // also consider this info: http://stackoverflow.com/questions/1374126/how-to-extend-an-existing-javascript-array-with-another-array
 // and this looks useful, if we can parse the headers somehow: https://developer.github.com/guides/traversing-with-pagination/
-mygetrequest.open("GET", "https://api.github.com/users/amdudda/repos", true);
+mygetrequest.open("GET", "https://api.github.com/users/amdudda/repos", true);  // ?per_page=100
 mygetrequest.send(null);
