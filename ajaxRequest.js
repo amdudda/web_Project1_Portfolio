@@ -94,6 +94,7 @@ function fetchRepoData(pagenum, numrecords) {
 
 // fetch the selected repository's readme file, if it exists.
 function fetchReadmeData(repoName) {
+    console.log("fetching readme");
     var repository = "https://raw.githubusercontent.com/amdudda/" + repoName + "/master/README.md";
     var current_page = new ajaxRequest();
     current_page.open("GET", repository, true);
@@ -110,6 +111,8 @@ function fetchReadmeData(repoName) {
                 output = "This repository has no README.md";
             }
         }
+        // and send the data to the div element.
+        var r_i = document.getElementById("readme_info");
         r_i.innerText = output;
         r_i.style.visibility = "visible";
     }
