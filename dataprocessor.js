@@ -16,7 +16,7 @@ function parseData(repoData) {
         output += "<p class='sommaire'>" + repoData[i].description + "</p>";
         output += "<p class='langue'>Language: " + repoData[i].language + "</p>";
         output += "<p class='jour'>Last push: " + repoData[i].pushed_at.substring(0, 10) + "</p>";
-        var getReadme = "fetchReadmeData('" + repoData[i].name + "')";  // the string representing what onclick is supposed to do
+        var getReadme = "fetchReadmeData(\"" + repoData[i].name + "\")";  // the string representing what onclick is supposed to do
         output += "<p class='lisezmoi' onclick='" + getReadme + "'>View readme (popup)</p>";
         output += '</div>';
         // end a row if there are 3 cells or if the last repo has been processed.

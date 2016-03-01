@@ -42,7 +42,7 @@ mygetrequest.onreadystatechange=function(){
             /*document.getElementById("projects").innerHTML=parseData(jsondata);
             loadLanguages(jsondata);
             loadSortOptions();*/
-            for (i=1; i<=total_pages; i++) {
+            for (var i=1; i<=total_pages; i++) {
                 fetchRepoData(i,total_pages);
             }
             /* AMD: end of replacement code*/
@@ -71,7 +71,7 @@ function fetchRepoData(pagenum, numrecords) {
         if (current_page.readyState == 4) {
             if (current_page.status == 200 || window.location.href.indexOf("http") == -1) {
                 var pagedata = eval("(" + current_page.responseText + ")"); //retrieve result as an JavaScript object
-                // and add it to the array of JSON objects
+                // and add it to the array of JSON objects - taking advantage of Java data types being very flexible.
                 Array.prototype.push.apply(jsondata,pagedata);
                 console.log("json data has " + jsondata.length + "elements")
             }
