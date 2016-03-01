@@ -43,3 +43,16 @@ a:hover, a:visited {
 a:active {
      color: #00362C;
 }
+
+/* styles to deal with readme popups */
+#readme_info {
+    border: 1px solid #00072B;;
+    background: #BDC5C8;
+    padding: 10px;
+}
+
+.lisezmoi {
+    color: #00362c;
+    font-style: italic;
+    text-decoration: underline;
+}

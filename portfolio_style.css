@@ -76,13 +76,7 @@ a {
     left: 25%;
     height: 50%;
     width: 50%;
-    border: 1px solid crimson;
     border-radius: 5px;
-    background: lightyellow;
     text-wrap: normal;
     overflow: auto;
-}
-.lisezmoi {
-    color: blue;
-    font-weight: bold;
 }
