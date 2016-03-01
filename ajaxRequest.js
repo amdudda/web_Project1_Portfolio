@@ -60,6 +60,7 @@ mygetrequest.onreadystatechange=function(){
 mygetrequest.open("GET", "https://api.github.com/users/amdudda/repos", true);  // ?per_page=100
 mygetrequest.send(null);
 
+// this is an asynchronous function call to fetch a given page of the repository data.
 function fetchRepoData(pagenum, numrecords) {
     var current_page = new ajaxRequest();
     var page_to_fetch = "https://api.github.com/users/amdudda/repos?page=" + pagenum;
