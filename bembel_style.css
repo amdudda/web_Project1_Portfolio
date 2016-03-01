@@ -56,3 +56,7 @@ a:active {
     font-style: italic;
     text-decoration: underline;
 }
+
+pre {
+    background: #FEFEFE;
+}

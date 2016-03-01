@@ -97,7 +97,7 @@ function fetchReadmeData(repoName) {
     console.log("fetching readme");
     var repository = "https://raw.githubusercontent.com/amdudda/" + repoName + "/master/README.md";
     var current_page = new ajaxRequest();
-    var output = "<p style='font-weight: bold'>README in plaintext.  Click anywhere on popup to close.</p>";
+    var output = "<p style='font-weight: bold'>README.md in plaintext.  Click anywhere on popup to close.</p>";
     current_page.open("GET", repository, true);
     current_page.send(null);
     // and this actually processes the data once it comes back
