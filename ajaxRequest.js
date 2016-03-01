@@ -97,23 +97,23 @@ function fetchReadmeData(repoName) {
     console.log("fetching readme");
     var repository = "https://raw.githubusercontent.com/amdudda/" + repoName + "/master/README.md";
     var current_page = new ajaxRequest();
+    var output = "<p style='font-weight: bold'>README in plaintext.  Click anywhere on popup to close.</p>";
     current_page.open("GET", repository, true);
     current_page.send(null);
     // and this actually processes the data once it comes back
     current_page.onreadystatechange=function() {
         if (current_page.readyState == 4) {
             if (current_page.status == 200 || window.location.href.indexOf("http") == -1) {
-                var output = (current_page.responseText); //retrieve result as an JavaScript object
-                console.log(output);
-                //return output;
+                output += "<pre>" + (current_page.responseText) + "</pre>"; //retrieve result as an JavaScript object
+                //console.log(output);
             }
             else {
-                output = "This repository has no README.md";
+                output += "<pre>This repository has no README.md</pre>";
             }
         }
         // and send the data to the div element.
         var r_i = document.getElementById("readme_info");
-        r_i.innerText = output;
+        r_i.innerHTML = output;
         r_i.style.visibility = "visible";
     }
 }
