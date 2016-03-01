@@ -2,7 +2,6 @@
  * Created by amdudda on 2/9/16.
  */
 
-
 function parseData(repoData) {
     var numcols = 3;
     var output = "";
@@ -17,6 +16,8 @@ function parseData(repoData) {
         output += "<p class='sommaire'>" + repoData[i].description + "</p>";
         output += "<p class='langue'>Language: " + repoData[i].language + "</p>";
         output += "<p class='jour'>Last push: " + repoData[i].pushed_at.substring(0, 10) + "</p>";
+        var getReadme = "fetchReadmeData(" + repoData.name + ")";  // the string representing what onclick is supposed to do
+        output += "<p class='lisezmoi' onclick=''" + getReadme + "'>View readme (popup)</p>"
         output += '</div>';
         // end a row if there are 3 cells or if the last repo has been processed.
         if (i % numcols == numcols - 1 || i + 1 == repoData.length) output += "</div>";
@@ -200,3 +201,15 @@ function sortDescByProperty(property) {
         return sortStatus;
     };
 }
+/*  might not need this?
+
+function setupReadmeLinks(repoName) {
+    var readmeClass = document.getElementsByClassName("lisezmoi");
+
+    // event listeners for readme class elements
+    for (var i= 0; i<readmeClass.length; i++) {
+        readmeClass[i].addEventListener("click", function() {
+            fetchReadmeData(repoName); //("web_Project1_Portfolio");
+        });
+    };
+}*/

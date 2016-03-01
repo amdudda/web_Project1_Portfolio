@@ -85,7 +85,39 @@ function fetchRepoData(pagenum, numrecords) {
                 document.getElementById("projects").innerHTML = parseData(jsondata);
                 loadLanguages(jsondata);
                 loadSortOptions();
+
+
             }
         }
     }
+}
+
+// fetch the selected repository's readme file, if it exists.
+function fetchReadmeData(repoName) {
+    var repository = "https://raw.githubusercontent.com/amdudda/" + repoName + "/master/README.md";
+    var current_page = new ajaxRequest();
+    current_page.open("GET", repository, true);
+    current_page.send(null);
+    // and this actually processes the data once it comes back
+    current_page.onreadystatechange=function() {
+        if (current_page.readyState == 4) {
+            if (current_page.status == 200 || window.location.href.indexOf("http") == -1) {
+                var output = (current_page.responseText); //retrieve result as an JavaScript object
+                console.log(output);
+                //return output;
+            }
+            else {
+                output = "This repository has no README.md";
+            }
+        }
+        r_i.innerText = output;
+        r_i.style.visibility = "visible";
+    }
+}
+
+function hideReadme() {
+    // add event listener so people can make the readme box go away.
+    var r_i = document.getElementById("readme_info");
+    r_i.style.visibility = "hidden";
+    //r_i.addEventListener("click",function() { this.style.visibility = "hidden"; } );
 }
