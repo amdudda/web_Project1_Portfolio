@@ -42,7 +42,7 @@ mygetrequest.onreadystatechange=function(){
             /*document.getElementById("projects").innerHTML=parseData(jsondata);
             loadLanguages(jsondata);
             loadSortOptions();*/
-            for (i=1; i<=total_pages; i++) {
+            for (var i=1; i<=total_pages; i++) {
                 fetchRepoData(i,total_pages);
             }
             /* AMD: end of replacement code*/
@@ -71,7 +71,7 @@ function fetchRepoData(pagenum, numrecords) {
         if (current_page.readyState == 4) {
             if (current_page.status == 200 || window.location.href.indexOf("http") == -1) {
                 var pagedata = eval("(" + current_page.responseText + ")"); //retrieve result as an JavaScript object
-                // and add it to the array of JSON objects
+                // and add it to the array of JSON objects - taking advantage of Java data types being very flexible.
                 Array.prototype.push.apply(jsondata,pagedata);
                 console.log("json data has " + jsondata.length + "elements")
             }
@@ -85,7 +85,42 @@ function fetchRepoData(pagenum, numrecords) {
                 document.getElementById("projects").innerHTML = parseData(jsondata);
                 loadLanguages(jsondata);
                 loadSortOptions();
+
+
             }
         }
     }
+}
+
+// fetch the selected repository's readme file, if it exists.
+function fetchReadmeData(repoName) {
+    console.log("fetching readme");
+    var repository = "https://raw.githubusercontent.com/amdudda/" + repoName + "/master/README.md";
+    var current_page = new ajaxRequest();
+    var output = "<p style='font-weight: bold'>README in plaintext.  Click anywhere on popup to close.</p>";
+    current_page.open("GET", repository, true);
+    current_page.send(null);
+    // and this actually processes the data once it comes back
+    current_page.onreadystatechange=function() {
+        if (current_page.readyState == 4) {
+            if (current_page.status == 200 || window.location.href.indexOf("http") == -1) {
+                output += "<pre>" + (current_page.responseText) + "</pre>"; //retrieve result as an JavaScript object
+                //console.log(output);
+            }
+            else {
+                output += "<pre>This repository has no README.md</pre>";
+            }
+        }
+        // and send the data to the div element.
+        var r_i = document.getElementById("readme_info");
+        r_i.innerHTML = output;
+        r_i.style.visibility = "visible";
+    }
+}
+
+function hideReadme() {
+    // add event listener so people can make the readme box go away.
+    var r_i = document.getElementById("readme_info");
+    r_i.style.visibility = "hidden";
+    //r_i.addEventListener("click",function() { this.style.visibility = "hidden"; } );
 }

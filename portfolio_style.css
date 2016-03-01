@@ -66,3 +66,17 @@ a {
     top: 75px;
     left: 80px;
 }
+
+/* styles to deal with readme popups */
+#readme_info {
+    /* http://www.w3schools.com/cssref/pr_class_visibility.asp */
+    visibility: hidden;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    height: 50%;
+    width: 50%;
+    border-radius: 5px;
+    text-wrap: normal;
+    overflow: auto;
+}
