@@ -8,7 +8,7 @@ Comments not in original are prefixed with "AMD:"
 var jsondata = [];  // AMD: make this global so code can work with it
 var pages_processed = 0;
 
-function ajaxRequest(){
+function AjaxRequest(){
     var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"]; //activeX versions to check for in IE
     if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
         for (var i=0; i<activexmodes.length; i++){
@@ -23,10 +23,11 @@ function ajaxRequest(){
     else if (window.XMLHttpRequest) // if Mozilla, Safari etc
         return new XMLHttpRequest();
     else
+        // AMD: "constructor returns primitive" according to code inspection, but this is borrowed code so I'm leaving this as-is
         return false;
 }
 
-var mygetrequest=new ajaxRequest();
+var mygetrequest=new AjaxRequest();
 mygetrequest.onreadystatechange=function(){
     if (mygetrequest.readyState==4){
         if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
@@ -62,7 +63,7 @@ mygetrequest.send(null);
 
 // this is an asynchronous function call to fetch a given page of the repository data.
 function fetchRepoData(pagenum, numrecords) {
-    var current_page = new ajaxRequest();
+    var current_page = new AjaxRequest();
     var page_to_fetch = "https://api.github.com/users/amdudda/repos?page=" + pagenum;
     current_page.open("GET", page_to_fetch, true);
     current_page.send(null);
@@ -96,7 +97,7 @@ function fetchRepoData(pagenum, numrecords) {
 function fetchReadmeData(repoName) {
     console.log("fetching readme");
     var repository = "https://raw.githubusercontent.com/amdudda/" + repoName + "/master/README.md";
-    var current_page = new ajaxRequest();
+    var current_page = new AjaxRequest();
     var output = "<p style='font-weight: bold'>README.md in plaintext.  Click anywhere on popup to close.</p>";
     current_page.open("GET", repository, true);
     current_page.send(null);
